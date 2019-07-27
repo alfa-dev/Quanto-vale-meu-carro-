@@ -6,5 +6,5 @@ set :root do
 end
 
 get '/' do
-  erb :index
+  erb :index, :layout => :layout
 end
