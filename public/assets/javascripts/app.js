@@ -19,6 +19,43 @@
     }
   };
 
+  var load_models = function(callback) {
+    var api = new Api();
+
+    api.fetch('/veiculos_21.json');
+
+    api.ok = function(data) {
+      volanty.models = data;
+
+      if(callback)
+        callback();
+    }
+  };
+
+  var render_models_selector = function() {
+    var template       = doc.querySelector('#model');
+    var sectionToShow  = template.content.cloneNode(true);
+
+    var model_selector = sectionToShow.querySelector('#model_selector');
+    var model_form     = sectionToShow.querySelector('#model_form');
+
+    volanty.models.map(function(model){
+      model_selector.appendChild(create_option(model));
+    });
+
+    model_form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      volanty.selected_model = volanty.models.filter( function(model){
+        return (model.id == model_selector.value);
+      })[0];
+
+      return false;
+    });
+
+    doc.body.appendChild(sectionToShow);
+  }
+
   var render_brands_selector = function() {
     var template       = doc.querySelector('#brand');
     var sectionToShow  = template.content.cloneNode(true);
@@ -37,19 +74,21 @@
         return (brand.id == brand_selector.value);
       })[0];
 
+      load_models(render_models_selector);
+
       return false;
     });
 
     doc.body.appendChild(sectionToShow);
-
-    function create_option(brand) {
-      var option = doc.createElement('option');
-      option.value = brand.id;
-      option.innerText = brand.name;
-
-      return option;
-    }
   };
+
+  function create_option(brand) {
+    var option = doc.createElement('option');
+    option.value = brand.id;
+    option.innerText = brand.name;
+
+    return option;
+  }
 
   doc.addEventListener("DOMContentLoaded", app_start);
 
