@@ -32,6 +32,43 @@
     }
   };
 
+  var load_year = function(callback) {
+    var api = new Api();
+
+    api.fetch('/veiculos_ano_4828.json');
+
+    api.ok = function(data) {
+      volanty.years = data;
+
+      if(callback)
+        callback();
+    }
+  };
+
+  var render_year_selector = function() {
+    var template       = doc.querySelector('#year');
+    var sectionToShow  = template.content.cloneNode(true);
+
+    var year_selector = sectionToShow.querySelector('#year_selector');
+    var year_form     = sectionToShow.querySelector('#year_form');
+
+    volanty.years.map(function(year){
+      year_selector.appendChild(create_option(year));
+    });
+
+    year_form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      volanty.selected_year = volanty.years.filter( function(year){
+        return (year.id == model_selector.value);
+      })[0];
+
+      return false;
+    });
+
+    doc.body.appendChild(sectionToShow);
+  }
+
   var render_models_selector = function() {
     var template       = doc.querySelector('#model');
     var sectionToShow  = template.content.cloneNode(true);
@@ -49,6 +86,8 @@
       volanty.selected_model = volanty.models.filter( function(model){
         return (model.id == model_selector.value);
       })[0];
+
+      load_year(render_year_selector);
 
       return false;
     });
