@@ -10,13 +10,21 @@
     });
   };
 
-  var render_price = function() {
-    var template = doc.querySelector('#price_template');
+  var render_chosen_car = function() {
+    var template = doc.querySelector('#chosen_car_template');
     var sectionToShow  = template.content.cloneNode(true);
 
-    var price = sectionToShow.querySelector('#price');
+    var name = sectionToShow.querySelector("#car_name");
+    var fuel = sectionToShow.querySelector("#car_fuel");
+    var year = sectionToShow.querySelector("#car_year");
+    var price = sectionToShow.querySelector("#car_price");
+    var reference = sectionToShow.querySelector("#car_reference");
 
-    price.innerHTML = JSON.stringify(volanty.price);
+    name.textContent = volanty.chosen_car.name;
+    fuel.textContent = volanty.chosen_car.combustivel;
+    year.textContent = volanty.chosen_car.ano_modelo;
+    price.textContent = volanty.chosen_car.preco;
+    reference.textContent = volanty.chosen_car.referencia;
 
     doc.body.appendChild(sectionToShow);
   }
@@ -40,9 +48,9 @@
       })[0];
 
       load_data('/21_4828_2013-1.json', function(data) {
-        volanty.price = data;
+        volanty.chosen_car = data;
 
-        render_price();
+        render_chosen_car();
       });
 
       return false;
