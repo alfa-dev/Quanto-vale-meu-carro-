@@ -10,6 +10,17 @@
     });
   };
 
+  var render_price = function() {
+    var template = doc.querySelector('#price_template');
+    var sectionToShow  = template.content.cloneNode(true);
+
+    var price = sectionToShow.querySelector('#price');
+
+    price.innerHTML = JSON.stringify(volanty.price);
+
+    doc.body.appendChild(sectionToShow);
+  }
+
   var render_years_selector = function() {
     var template       = doc.querySelector('#year_template');
     var sectionToShow  = template.content.cloneNode(true);
@@ -27,6 +38,12 @@
       volanty.selected_year = volanty.years.filter( function(year){
         return (year.id == model_selector.value);
       })[0];
+
+      load_data('/21_4828_2013-1.json', function(data) {
+        volanty.price = data;
+
+        render_price();
+      });
 
       return false;
     });
