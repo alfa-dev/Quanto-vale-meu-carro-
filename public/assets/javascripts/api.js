@@ -11,13 +11,18 @@ function Api(options) {
   this.fields = options.fields || null;
 }
 
-Api.prototype.fetch = function(url) {
+Api.prototype.get = function(url) {
+  this.url = url;
+  this.fetch();
+}
+
+Api.prototype.fetch = function() {
   var self = this;
 
   if( self.fields )
     self.init.body = JSON.stringify( self.fields );
 
-  fetch(url, self.init)
+  fetch(this.url, self.init)
     .then(function(data){
       if (data.statusText == "Unauthorized") self.unauthorized();
       if (data.statusText == "Not Found")    self.notFound();

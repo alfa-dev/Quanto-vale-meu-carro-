@@ -3,50 +3,15 @@
   var volanty = global.volanty = global.volanty || {};
 
   var app_start = function() {
-    load_brands(render_brands_selector);
-  };
-
-  var load_brands = function(callback) {
-    var api = new Api();
-
-    api.fetch('/carro_marcas.json');
-
-    api.ok = function(data) {
+    load_data('/carro_marcas.json', function(data){
       volanty.brands = data;
 
-      if(callback)
-        callback();
-    }
+      render_brands_selector();
+    });
   };
 
-  var load_models = function(callback) {
-    var api = new Api();
-
-    api.fetch('/veiculos_21.json');
-
-    api.ok = function(data) {
-      volanty.models = data;
-
-      if(callback)
-        callback();
-    }
-  };
-
-  var load_year = function(callback) {
-    var api = new Api();
-
-    api.fetch('/veiculos_ano_4828.json');
-
-    api.ok = function(data) {
-      volanty.years = data;
-
-      if(callback)
-        callback();
-    }
-  };
-
-  var render_year_selector = function() {
-    var template       = doc.querySelector('#year');
+  var render_years_selector = function() {
+    var template       = doc.querySelector('#year_template');
     var sectionToShow  = template.content.cloneNode(true);
 
     var year_selector = sectionToShow.querySelector('#year_selector');
@@ -70,7 +35,7 @@
   }
 
   var render_models_selector = function() {
-    var template       = doc.querySelector('#model');
+    var template       = doc.querySelector('#model_template');
     var sectionToShow  = template.content.cloneNode(true);
 
     var model_selector = sectionToShow.querySelector('#model_selector');
@@ -87,7 +52,11 @@
         return (model.id == model_selector.value);
       })[0];
 
-      load_year(render_year_selector);
+      load_data('/veiculos_ano_4828.json', function(data) {
+        volanty.years = data;
+
+        render_years_selector();
+      });
 
       return false;
     });
@@ -96,7 +65,7 @@
   }
 
   var render_brands_selector = function() {
-    var template       = doc.querySelector('#brand');
+    var template       = doc.querySelector('#brand_template');
     var sectionToShow  = template.content.cloneNode(true);
 
     var brand_selector = sectionToShow.querySelector('#brand_selector');
@@ -113,12 +82,25 @@
         return (brand.id == brand_selector.value);
       })[0];
 
-      load_models(render_models_selector);
+      load_data('/veiculos_21.json', function(data) {
+        volanty.models = data;
+
+        render_models_selector();
+      });
 
       return false;
     });
 
     doc.body.appendChild(sectionToShow);
+  };
+
+  var load_data = function(url, callback) {
+    var api = new Api();
+
+    api.get(url);
+
+    if(callback)
+      api.ok = callback;
   };
 
   function create_option(brand) {
