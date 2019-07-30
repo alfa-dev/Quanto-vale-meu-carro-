@@ -11,8 +11,7 @@
   };
 
   var render_chosen_car = function() {
-    var template = doc.querySelector('#chosen_car_template');
-    var sectionToShow  = template.content.cloneNode(true);
+    var sectionToShow = get_template('chosen_car');
 
     var name = sectionToShow.querySelector("#car_name");
     var fuel = sectionToShow.querySelector("#car_fuel");
@@ -30,8 +29,7 @@
   }
 
   var render_years_selector = function() {
-    var template       = doc.querySelector('#year_template');
-    var sectionToShow  = template.content.cloneNode(true);
+    var sectionToShow = get_template('year');
 
     var year_selector = sectionToShow.querySelector('#year_selector');
     var year_form     = sectionToShow.querySelector('#year_form');
@@ -60,8 +58,7 @@
   }
 
   var render_models_selector = function() {
-    var template       = doc.querySelector('#model_template');
-    var sectionToShow  = template.content.cloneNode(true);
+    var sectionToShow = get_template('model');
 
     var model_selector = sectionToShow.querySelector('#model_selector');
     var model_form     = sectionToShow.querySelector('#model_form');
@@ -90,8 +87,7 @@
   }
 
   var render_brands_selector = function() {
-    var template       = doc.querySelector('#brand_template');
-    var sectionToShow  = template.content.cloneNode(true);
+    var sectionToShow = get_template('brand');
 
     var brand_selector = sectionToShow.querySelector('#brand_selector');
     var brand_form     = sectionToShow.querySelector('#brand_form');
@@ -118,6 +114,12 @@
 
     doc.body.appendChild(sectionToShow);
   };
+
+  var get_template = function(action) {
+    var template = doc.querySelector('#' + action + '_template');
+
+    return template.content.cloneNode(true);
+  }
 
   var load_data = function(url, callback) {
     var api = new Api();
