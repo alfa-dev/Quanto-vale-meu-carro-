@@ -1,23 +1,38 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ffi (1.11.1)
     mustermann (1.0.3)
     rack (2.0.7)
     rack-protection (2.0.5)
       rack
+    rb-fsevent (0.10.3)
+    rb-inotify (0.10.0)
+      ffi (~> 1.0)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
       rack-protection (= 2.0.5)
       tilt (~> 2.0)
+    slim (4.0.1)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
     spring (2.1.0)
+    temple (0.8.1)
     tilt (2.0.9)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  sass
   sinatra
+  slim
   spring
 
 RUBY VERSION

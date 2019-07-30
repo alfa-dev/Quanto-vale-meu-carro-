@@ -2,12 +2,14 @@
 
   var volanty   = global.volanty = global.volanty || {};
 
-  volanty.container = document.querySelector("#container")
+  volanty.container = doc.querySelector("#container");
 
   var app_start = function() {
+    volanty.app_title = new ReactValue(doc.querySelector('#app_title'));
+    volanty.app_title.set('Quanto vale meu carro?');
+
     load_data('marcas', function(data){
       volanty.brands = data;
-
       render_brands_selector();
     });
   };
