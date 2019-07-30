@@ -35,6 +35,13 @@ var load_data = function(url, callback) {
 
 function create_option(brand) {
   var option = document.createElement('option');
+  option.innerText = brand.name;
+
+  return option;
+};
+
+function create_option_with_id(brand) {
+  var option = document.createElement('option');
   option.value = brand.id;
   option.innerText = brand.name;
 

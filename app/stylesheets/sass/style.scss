@@ -29,7 +29,7 @@ header {
 form {
   text-align: center;
   background: white;
-  box-shadow: 2px 2px 2px rgba(gray, .2);
+  box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.22);
   padding: $gap/2;
   margin: $gap/2;
 
@@ -41,13 +41,16 @@ fieldset {
 }
 
 button {
-  background: #2f4f98;
+  background: #009ddf;
   font-size: 25px;
   color: #fff;
+  padding: $gap/4 $gap;
+  border: 0px;
 }
 
-select {
+select, input {
   font-size: 15px;
   border: 2px #2f4f98 solid;
-
+  padding: $gap/3;
+  margin: $gap/2;
 }

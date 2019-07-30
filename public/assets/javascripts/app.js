@@ -39,7 +39,7 @@
     var year_form     = sectionToShow.querySelector('#year_form');
 
     volanty.years.map(function(year){
-      year_selector.appendChild(create_option(year));
+      year_selector.appendChild(create_option_with_id(year));
     });
 
     year_form.addEventListener('submit', function(e) {
@@ -64,8 +64,9 @@
   var render_models_selector = function() {
     var sectionToShow = get_template('model');
 
-    var model_selector = sectionToShow.querySelector('#model_selector');
-    var model_form     = sectionToShow.querySelector('#model_form');
+    var model_selector        = sectionToShow.querySelector('#model_selector');
+    var brand_selector_search = sectionToShow.querySelector('#model_selector_search');
+    var model_form            = sectionToShow.querySelector('#model_form');
 
     volanty.models.map(function(model){
       model_selector.appendChild(create_option(model));
@@ -75,7 +76,7 @@
       e.preventDefault();
 
       volanty.selected_model = volanty.models.filter( function(model){
-        return (model.id == model_selector.value);
+        return (model.name == brand_selector_search.value);
       })[0];
 
       load_data('veiculo/' + volanty.selected_brand.id + '/' + volanty.selected_model.id, function(data) {
@@ -93,8 +94,9 @@
   var render_brands_selector = function() {
     var sectionToShow = get_template('brand');
 
-    var brand_selector = sectionToShow.querySelector('#brand_selector');
-    var brand_form     = sectionToShow.querySelector('#brand_form');
+    var brand_selector        = sectionToShow.querySelector('#brand_selector');
+    var brand_selector_search = sectionToShow.querySelector('#brand_selector_search');
+    var brand_form            = sectionToShow.querySelector('#brand_form');
 
     volanty.brands.map(function(brand){
       brand_selector.appendChild(create_option(brand));
@@ -104,7 +106,7 @@
       e.preventDefault();
 
       volanty.selected_brand = volanty.brands.filter( function(brand){
-        return (brand.id == brand_selector.value);
+        return (brand.name == brand_selector_search.value);
       })[0];
 
       load_data('veiculos/' + volanty.selected_brand.id, function(data) {
