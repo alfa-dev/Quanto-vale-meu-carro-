@@ -26,6 +26,10 @@ header {
   }
 }
 
+a {
+  color: #00a3f2;
+}
+
 form {
   text-align: center;
   background: white;
@@ -53,4 +57,50 @@ select, input {
   border: 2px #2f4f98 solid;
   padding: $gap/3;
   margin: $gap/2;
+}
+
+#car_info {
+  @extend form;
+
+  text-align: left;
+  font-size: 17px;
+
+  dl {
+    border-bottom: 1px solid #2f4f98;
+    padding: 0.5em;
+  }
+
+  dt {
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+    color: #2167b2;
+  }
+
+  dd {
+    margin: 0 0 0 110px;
+    padding: 0 0 0.5em 0;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(0,0,0,0.8);
+  }
+
+  #car_price {
+    color: #62992f;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  #car_reference {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(0,0,0,.5);
+  }
 }
