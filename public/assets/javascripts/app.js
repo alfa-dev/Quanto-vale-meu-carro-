@@ -5,7 +5,7 @@
   volanty.container = document.querySelector("#container")
 
   var app_start = function() {
-    load_data('marcas.json', function(data){
+    load_data('marcas', function(data){
       volanty.brands = data;
 
       render_brands_selector();
@@ -47,7 +47,7 @@
         return (year.id == year_selector.value);
       })[0];
 
-      load_data('/21_4828_2013-1.json', function(data) {
+      load_data('veiculo/' + volanty.selected_brand.id + '/' + volanty.selected_model.id + '/' + volanty.selected_year.id, function(data) {
         volanty.chosen_car = data;
 
         render_chosen_car();
@@ -76,7 +76,7 @@
         return (model.id == model_selector.value);
       })[0];
 
-      load_data('/veiculos_ano_4828.json', function(data) {
+      load_data('veiculo/' + volanty.selected_brand.id + '/' + volanty.selected_model.id, function(data) {
         volanty.years = data;
 
         render_years_selector();
@@ -105,7 +105,7 @@
         return (brand.id == brand_selector.value);
       })[0];
 
-      load_data('/veiculos_21.json', function(data) {
+      load_data('veiculos/' + volanty.selected_brand.id, function(data) {
         volanty.models = data;
 
         render_models_selector();
@@ -117,6 +117,7 @@
     render_section(sectionToShow);
   };
 
+  /* START APP WHEN DOM IS READY */
   doc.addEventListener("DOMContentLoaded", app_start);
 
 }(window, document));

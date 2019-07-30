@@ -27,7 +27,7 @@ var get_template = function(action) {
 var load_data = function(url, callback) {
   var api = new Api();
 
-  api.get("http://fipeapi.appspot.com/api/1/carros/" + url);
+  api.get("http://fipeapi.appspot.com/api/1/carros/" + url + '.json');
 
   if(callback)
     api.ok = callback;
