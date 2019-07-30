@@ -1,7 +1,7 @@
 # Quanto vale meu carro?
 Descubra o valor do seu carro na tabela FIPE de forma fácil e simples.
 
-Este projeto, usa como base a API [API de Consulta Tabela FIPE](http://fipeapi.appspot.com/), para descobrir o valor do seu carro baseado em dados simples.
+Este projeto, usa como base a API [API de Consulta Tabela FIPE](http://fipeapi.appspot.com/), para descobrir o valor do seu carro baseado em informações simples.
 
 ## Rodando o projeto
 para instalar as dependências execute:
