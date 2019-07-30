@@ -5,12 +5,30 @@
 
 <template id="chosen_car_template">
   <section id="car_info">
-    <div id="car_name"></div>
-    <div id="car_fuel"></div>
-    <div id="car_year"></div>
-    <div id="car_price"></div>
+    <dl>
+      <dt>Marca:</dt>
+      <dd id="car_brand"></dd>
 
+      <dt>Nome:</dt>
+      <dd id="car_name"></dd>
+
+      <dt>Combustível:</dt>
+      <dd id="car_fuel"></dd>
+
+      <dt>Ano:</dt>
+      <dd id="car_year"></dd>
+    </dl>
+
+    <div id="car_price"></div>
     <time id="car_reference"></time>
+
+    <footer>
+      <p>
+        Agora você já pode vender seu carro!<br/>
+        <a href="https://www.volanty.com/vender.html">Clique aqui</a> e venda seu carro sem se preocupar.<br/>
+        <small>na Volanty seu carro vale mais.</small>
+      </p>
+    </footer>
   </section>
 </template>
 
