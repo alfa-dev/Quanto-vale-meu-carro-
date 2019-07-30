@@ -5,7 +5,7 @@
   volanty.container = document.querySelector("#container")
 
   var app_start = function() {
-    load_data('/carro_marcas.json', function(data){
+    load_data('marcas.json', function(data){
       volanty.brands = data;
 
       render_brands_selector();
@@ -115,49 +115,6 @@
     });
 
     render_section(sectionToShow);
-  };
-
-  var render_section = function(section) {
-    while (container.firstChild) {
-      container.removeChild(container.firstChild);
-    }
-
-    container.appendChild(section);
-    afterRender();
-  };
-
-  function afterRender() {
-    var submits = document.querySelectorAll('form button[type="submit"]');
-
-    submits.forEach( function(submit) {
-      submit.form.addEventListener('submit', function(){
-        submit.textContent = 'Aguarde...';
-        submit.setAttribute('disabled', true);
-      });
-    });
-  };
-
-  var get_template = function(action) {
-    var template = doc.querySelector('#' + action + '_template');
-
-    return template.content.cloneNode(true);
-  };
-
-  var load_data = function(url, callback) {
-    var api = new Api();
-
-    api.get(url);
-
-    if(callback)
-      api.ok = callback;
-  };
-
-  function create_option(brand) {
-    var option = doc.createElement('option');
-    option.value = brand.id;
-    option.innerText = brand.name;
-
-    return option;
   };
 
   doc.addEventListener("DOMContentLoaded", app_start);
