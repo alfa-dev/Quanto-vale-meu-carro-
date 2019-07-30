@@ -18,12 +18,14 @@
     var sectionToShow = get_template('chosen_car');
 
     var name      = sectionToShow.querySelector("#car_name");
+    var brand     = sectionToShow.querySelector("#car_brand");
     var fuel      = sectionToShow.querySelector("#car_fuel");
     var year      = sectionToShow.querySelector("#car_year");
     var price     = sectionToShow.querySelector("#car_price");
     var reference = sectionToShow.querySelector("#car_reference");
 
     name.textContent      = volanty.chosen_car.name;
+    brand.textContent     = volanty.chosen_car.marca;
     fuel.textContent      = volanty.chosen_car.combustivel;
     year.textContent      = volanty.chosen_car.ano_modelo;
     price.textContent     = volanty.chosen_car.preco;
