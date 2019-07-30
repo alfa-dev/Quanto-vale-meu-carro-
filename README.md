@@ -1,7 +1,12 @@
 # Quanto vale meu carro?
+
 Descubra o valor do seu carro na tabela FIPE de forma fácil e simples.
 
+http://quanto-vale-meu-carro.herokuapp.com/
+
 Este projeto, usa como base a API [API de Consulta Tabela FIPE](http://fipeapi.appspot.com/), para descobrir o valor do seu carro baseado em informações simples.
+
+Para acessar a aplicação entre no 
 
 ## Rodando o projeto
 Para instalar as dependências execute:
