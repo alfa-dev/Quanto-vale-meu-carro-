@@ -8,12 +8,36 @@ var render_section = function(section) {
 };
 
 function afterRender() {
-  var submits = document.querySelectorAll('form button[type="submit"]');
+  var submits         = document.querySelectorAll('form button[type="submit"]');
+  var input_for_lists = document.querySelectorAll('form input[list]');
 
   submits.forEach( function(submit) {
     submit.form.addEventListener('submit', function(){
       submit.textContent = 'Aguarde...';
       submit.setAttribute('disabled', true);
+    });
+  });
+
+  input_for_lists.forEach( function(input) {
+    input.addEventListener('blur', function(){
+      var list     = input.getAttribute('list');
+      var options  = document.querySelectorAll('#' + list + ' option');
+      var is_valid = false;
+
+      options.forEach(function(option){
+        if(option.textContent === input.value){
+          is_valid = true;
+        }
+      });
+
+      if(is_valid)
+        input.setCustomValidity('');
+      else
+        input.setCustomValidity('Insira um nome válido');
+    });
+
+    input.addEventListener("keypress", function() {
+      input.setCustomValidity('');
     });
   });
 };
