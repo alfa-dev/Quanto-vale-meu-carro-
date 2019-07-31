@@ -59,6 +59,15 @@ select, input {
   margin: $gap/2;
 }
 
+.reset_button {
+  @extend button;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  width: 120px;
+  text-decoration: none;
+}
+
 #car_info {
   @extend form;
 
