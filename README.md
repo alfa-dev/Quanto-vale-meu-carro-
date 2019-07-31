@@ -19,8 +19,7 @@ Para rodar o projeto execute:
 ```
 rackup
 ```
-O servidor ira rodar na porta 9292 por padrão.
-acesse `http://localhost:9292`
+O servidor ira rodar na porta 9292 por padrão, acesse `http://localhost:9292`
 
 ---
 Caso queira vizualizar o projeto em outro device (um celular por exemplo), você precisa rodar o projeto da seguinte forma:
