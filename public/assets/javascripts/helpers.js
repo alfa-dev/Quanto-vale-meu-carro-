@@ -1,3 +1,7 @@
+String.prototype.trim_all = function(){
+  return this.replace(/ /g,'');
+};
+
 var render_section = function(section) {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
@@ -25,7 +29,9 @@ function afterRender() {
       var is_valid = false;
 
       options.forEach(function(option){
-        if(option.textContent === input.value){
+        console.log((option.textContent.trim_all().toLowerCase() === input.value.trim_all().toLowerCase()));
+        console.log(option.textContent.trim_all().toLowerCase(), input.value.trim_all().toLowerCase());
+        if(option.textContent.trim_all().toLowerCase() === input.value.trim_all().toLowerCase()){
           is_valid = true;
         }
       });

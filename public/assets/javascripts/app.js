@@ -78,7 +78,7 @@
       e.preventDefault();
 
       volanty.selected_model = volanty.models.filter( function(model){
-        return (model.name == brand_selector_search.value);
+        return (model.name.trim_all().toLowerCase() == brand_selector_search.value.trim_all().toLowerCase());
       })[0];
 
       load_data('veiculo/' + volanty.selected_brand.id + '/' + volanty.selected_model.id, function(data) {
@@ -108,7 +108,7 @@
       e.preventDefault();
 
       volanty.selected_brand = volanty.brands.filter( function(brand){
-        return (brand.name == brand_selector_search.value);
+        return (brand.name.trim_all().toLowerCase() == brand_selector_search.value.trim_all().toLowerCase());
       })[0];
 
       load_data('veiculos/' + volanty.selected_brand.id, function(data) {
